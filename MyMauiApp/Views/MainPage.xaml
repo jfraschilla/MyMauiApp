@@ -6,7 +6,7 @@
              xmlns:m="clr-namespace:MyMauiApp.Domain"
              x:DataType="vm:MainPageViewModel"
              BackgroundColor="White"
-             Title="eWallet Accounts"
+             Title="Accounts"
              Shell.NavBarIsVisible="False">
 
     <RefreshView
