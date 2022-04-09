@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyMauiApp.ViewModels"
+             x:Class="MyMauiApp.Views.CreatePage"
+             x:DataType="vm:CreatePageViewModel"
+             Title="Create Account"
+             Shell.NavBarIsVisible="True">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="SAVE" Command="{Binding SaveCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <Color x:Key="LightPrimaryColor">Black</Color>
+        <Color x:Key="DarkPrimaryColor">WhiteSmoke</Color>
+    </ContentPage.Resources>
+
+    <Grid Margin="5,20,5,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Padding="0"
+                StrokeThickness="2"
+                VerticalOptions="Center">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
+            <Border.Stroke>
+                <SolidColorBrush Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+            </Border.Stroke>
+            <Entry
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                Placeholder="Company Name"
+                Text="{Binding NewAccount.AccountName}"
+                ClearButtonVisibility="WhileEditing"/>
+        </Border>
+        <Border Grid.Row="1" Padding="0" 
+                StrokeThickness="2"
+                VerticalOptions="Center">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
+            <Border.Stroke>
+                <SolidColorBrush Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+            </Border.Stroke>
+            <Entry
+                VerticalOptions="Center"
+                Placeholder="Username" 
+                Text="{Binding NewAccount.UserName}"
+                ClearButtonVisibility="WhileEditing"/>
+        </Border>
+        <Border Grid.Row="2" Padding="0" 
+                StrokeThickness="2"
+                VerticalOptions="Center">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+            </Border.StrokeShape>
+            <Border.Stroke>
+                <SolidColorBrush Color="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+            </Border.Stroke>
+            <Entry
+                VerticalOptions="Center"
+                Placeholder="Password"
+                Text="{Binding NewAccount.Password}"
+                IsPassword="True"/>
+        </Border>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="MyMauiApp.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyMauiApp.ViewModels"
+             xmlns:m="clr-namespace:MyMauiApp.Domain"
+             x:DataType="vm:MainPageViewModel"
+             BackgroundColor="White"
+             Title="eWallet Accounts"
+             Shell.NavBarIsVisible="False">
+
+    <RefreshView
+            Command="{Binding RefreshCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            RefreshColor="Red">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <CollectionView Grid.Row="1"
+                    Background="Transparent"
+                    IsGrouped="False"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemsLayout="VerticalList"
+                    ItemsSource="{Binding Accounts}"
+                    SelectedItem="{Binding SelectedAccount, Mode=TwoWay}"
+                    SelectionMode="Single">
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="12">
+                        <Label HorizontalOptions="Center" Text="No Accounts" />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="m:Account">
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding AccountName}" 
+                                        FontSize="Large"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <ImageButton
+                        Grid.Row="0"
+                        Command="{Binding CreateCommand}"
+                        Source="add_box_black_48dp.svg"
+                        Background="Transparent" 
+                        HorizontalOptions="End"
+                        VerticalOptions="End"/>
+
+        </Grid>
+
+    </RefreshView>
+
+</ContentPage>
