@@ -7,7 +7,7 @@ namespace MyMauiApp;
 
 public partial class App : Application
 {
-	public App(MainPage page)
+	public App()
 	{
 		InitializeComponent();
 
@@ -18,10 +18,7 @@ public partial class App : Application
 #endif
 		});
 
-		//if (Config.Desktop)
-		//	MainPage = new DesktopShell();
-		//else
-			MainPage = new MobileShell();
+		MainPage = new MobileShell();
 
 	}
 
